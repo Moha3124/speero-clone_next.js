@@ -6,15 +6,20 @@ import Image from "next/image"
 
 const sections = [
   {
-    name: "Engines, Gearboxes & Accessories",
+    name: "Engines, Transmissions & Accessories",
+    cover: "/images/car-engine.2x.png",
     images: [
-      { src: "/images/download(1).png", price: "500 SAR" },
+      { src: "/images/download.avif", price: "500 SAR" },
       { src: "/images/download(2).png", price: "650 SAR" },
+      { src: "/images/download(3).png", price: "720 SAR" },
+      { src: "/images/download(3).png", price: "720 SAR" },
+      { src: "/images/download(3).png", price: "720 SAR" },
       { src: "/images/download(3).png", price: "720 SAR" },
     ],
   },
   {
-    name: "AC & Cooling System",
+    name: "Cooling & AC System",
+    cover: "/images/water-pump.2x.png",
     images: [
       { src: "/images/download(4).png", price: "400 SAR" },
       { src: "/images/download(5).png", price: "550 SAR" },
@@ -23,6 +28,7 @@ const sections = [
   },
   {
     name: "Fuel System",
+    cover: "/images/fuel-gauge.2x.png",
     images: [
       { src: "/images/download(7).png", price: "350 SAR" },
       { src: "/images/download(8).png", price: "450 SAR" },
@@ -30,7 +36,8 @@ const sections = [
     ],
   },
   {
-    name: "Plugs, Filters & Belts",
+    name: "Spark Plugs, Filters & Belts",
+    cover: "/images/spark-plug.2x.png",
     images: [
       { src: "/images/download(10).png", price: "120 SAR" },
       { src: "/images/download(11).png", price: "150 SAR" },
@@ -38,14 +45,16 @@ const sections = [
     ],
   },
   {
-    name: "Suspensions & Balancer Shaft",
+    name: "Shocks, Arms & Stabilizers",
+    cover: "/images/spring.2x.png",
     images: [
       { src: "/images/download(13).png", price: "400 SAR" },
       { src: "/images/download(14).png", price: "500 SAR" },
     ],
   },
   {
-    name: "Axle, Differential & Bearings",
+    name: "Axles, Differentials & Bearings",
+    cover: "/images/pstons.2x.png",
     images: [
       { src: "/images/download(15).png", price: "600 SAR" },
       { src: "/images/download(16).png", price: "750 SAR" },
@@ -53,13 +62,15 @@ const sections = [
   },
   {
     name: "Doors, Fenders & Hoods",
+    cover: "/images/doors.2x.png",
     images: [
       { src: "/images/download(17).png", price: "300 SAR" },
       { src: "/images/download(18).png", price: "450 SAR" },
     ],
   },
   {
-    name: "Bumpers, Grills & Front",
+    name: "Bumpers, Grilles & Front Panels",
+    cover: "/images/bumpars.2x.png",
     images: [
       { src: "/images/download(19).png", price: "800 SAR" },
       { src: "/images/download(20).png", price: "950 SAR" },
@@ -67,49 +78,77 @@ const sections = [
   },
 ]
 
-export default function FeatureListEN() {
+export default function FeatureList() {
   const [activeSection, setActiveSection] = useState(sections[0])
 
   return (
-    <section className="py-20 bg-secondary">
-      <div className="max-w-6xl mx-auto text-center">
-        <h2 className="text-3xl font-bold mb-6">Spare Parts Market</h2>
+    <section className="py-10 bg-secondary w-full">
+      <div className="w-full px-4 sm:px-10 md:px-20 lg:px-40 text-center">
+        <h2 className="text-2xl sm:text-3xl font-bold mb-6">Spare Parts Marketplace</h2>
 
-        {/* Sections */}
-        <div className="flex flex-wrap justify-center gap-3 mb-8">
+        {/* Section buttons with icons */}
+        <div className="flex justify-center overflow-x-auto gap-4 mb-8 scrollbar-hide">
           {sections.map((section) => (
             <button
               key={section.name}
               onClick={() => setActiveSection(section)}
-              className={`px-4 py-2 rounded-lg font-medium ${
+              className={`min-w-[10rem] h-36 sm:h-40 flex-shrink-0 flex flex-col items-center justify-between px-3 py-6 rounded-lg border transition-all ${
                 activeSection.name === section.name
                   ? "bg-primary text-white"
-                  : "bg-white text-gray-700 border border-gray-300 hover:bg-gray-100"
+                  : "bg-white text-gray-700 hover:bg-gray-100"
               }`}
             >
-              {section.name}
+              <Image
+                src={section.cover}
+                alt={section.name}
+                width={
+                  section.name === "Shocks, Arms & Stabilizers"
+                    ? 40
+                    : section.name === "Axles, Differentials & Bearings"
+                      ? 50
+                      : section.name === "Doors, Fenders & Hoods"
+                        ? 40
+                        : section.name === "Bumpers, Grilles & Front Panels"
+                          ? 80
+                          : 60
+                }
+                height={
+                  section.name === "Shocks, Arms & Stabilizers"
+                    ? 40
+                    : section.name === "Axles, Differentials & Bearings"
+                      ? 50
+                      : section.name === "Doors, Fenders & Hoods"
+                        ? 40
+                        : section.name === "Bumpers, Grilles & Front Panels"
+                          ? 50
+                          : 30
+                }
+                className="object-contain"
+              />
+              <span className="text-xs sm:text-sm text-center leading-tight">{section.name}</span>
             </button>
           ))}
         </div>
 
-        {/* Images */}
-        <Card className="p-6">
+        {/* Product cards with links */}
+        <Card className="p-3">
           <CardContent>
-            <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-4 justify-center">
+            <div className="flex gap-3 overflow-x-auto scrollbar-hide">
               {activeSection.images.map((item, i) => (
-                <div
+                <a
                   key={i}
-                  className="border rounded-lg overflow-hidden shadow-sm p-2 bg-white flex flex-col items-center"
+                  href={`/product/${activeSection.name}-${i}`}
+                  className="border rounded-lg overflow-hidden shadow-sm p-3 bg-white flex flex-col items-center justify-between hover:shadow-md transition min-h-[180px] sm:min-h-[250px] w-[130px] sm:w-[180px] flex-shrink-0"
                 >
                   <Image
                     src={item.src}
                     alt={`${activeSection.name}-part-${i}`}
-                    width={100}
-                    height={100}
-                    className="object-cover"
+                    width={80}
+                    height={80}
+                    className="object-contain"
                   />
-                  <p className="mt-2 font-medium text-gray-700">{item.price}</p>
-                </div>
+                  <p className="mt-2 text-xs sm:text-sm font-medium text-gray-700 text-center">{item.price}</p>
+                </a>
               ))}
             </div>
           </CardContent>
