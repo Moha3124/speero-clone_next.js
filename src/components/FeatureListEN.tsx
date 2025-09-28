@@ -6,74 +6,74 @@ import Image from "next/image"
 
 const sections = [
   {
-    name: "Engines, Transmissions & Accessories",
+    name: "Engines, Transmissions & Components",
     cover: "/images/car-engine.2x.png",
     images: [
-      { src: "/images/download.avif", price: "500 SAR" },
-      { src: "/images/download(2).png", price: "650 SAR" },
-      { src: "/images/download(3).png", price: "720 SAR" },
-      { src: "/images/download(3).png", price: "720 SAR" },
-      { src: "/images/download(3).png", price: "720 SAR" },
-      { src: "/images/download(3).png", price: "720 SAR" },
+      { src: "/images/download.avif", price: "500 SAR", name: "Toyota Engine" },
+      { src: "/images/download(2).png", price: "650 SAR", name: "Hyundai Transmission" },
+      { src: "/images/download(3).png", price: "720 SAR", name: "Nissan Radiator" },
+      { src: "/images/download(3).png", price: "720 SAR", name: "Nissan Radiator" },
+      { src: "/images/download(3).png", price: "720 SAR", name: "Nissan Radiator" },
+      { src: "/images/download(3).png", price: "720 SAR", name: "Nissan Radiator" },
     ],
   },
   {
     name: "Cooling & AC System",
     cover: "/images/water-pump.2x.png",
     images: [
-      { src: "/images/download(4).png", price: "400 SAR" },
-      { src: "/images/download(5).png", price: "550 SAR" },
-      { src: "/images/download(6).png", price: "600 SAR" },
+      { src: "/images/download(4).png", price: "400 SAR", name: "AC Compressor" },
+      { src: "/images/download(5).png", price: "550 SAR", name: "AC Radiator" },
+      { src: "/images/download(6).png", price: "600 SAR", name: "Cooling Fan" },
     ],
   },
   {
     name: "Fuel System",
     cover: "/images/fuel-gauge.2x.png",
     images: [
-      { src: "/images/download(7).png", price: "350 SAR" },
-      { src: "/images/download(8).png", price: "450 SAR" },
-      { src: "/images/download(9).png", price: "500 SAR" },
+      { src: "/images/download(7).png", price: "350 SAR", name: "Fuel Pump" },
+      { src: "/images/download(8).png", price: "450 SAR", name: "Fuel Filter" },
+      { src: "/images/download(9).png", price: "500 SAR", name: "Fuel Pressure Sensor" },
     ],
   },
   {
     name: "Spark Plugs, Filters & Belts",
     cover: "/images/spark-plug.2x.png",
     images: [
-      { src: "/images/download(10).png", price: "120 SAR" },
-      { src: "/images/download(11).png", price: "150 SAR" },
-      { src: "/images/download(12).png", price: "180 SAR" },
+      { src: "/images/download(10).png", price: "120 SAR", name: "NGK Spark Plug" },
+      { src: "/images/download(11).png", price: "150 SAR", name: "Air Filter" },
+      { src: "/images/download(12).png", price: "180 SAR", name: "Engine Belt" },
     ],
   },
   {
     name: "Shocks, Arms & Stabilizers",
     cover: "/images/spring.2x.png",
     images: [
-      { src: "/images/download(13).png", price: "400 SAR" },
-      { src: "/images/download(14).png", price: "500 SAR" },
+      { src: "/images/download(13).png", price: "400 SAR", name: "Front Shock" },
+      { src: "/images/download(14).png", price: "500 SAR", name: "Rear Arm" },
     ],
   },
   {
     name: "Axles, Differentials & Bearings",
     cover: "/images/pstons.2x.png",
     images: [
-      { src: "/images/download(15).png", price: "600 SAR" },
-      { src: "/images/download(16).png", price: "750 SAR" },
+      { src: "/images/download(15).png", price: "600 SAR", name: "Wheel Bearing" },
+      { src: "/images/download(16).png", price: "750 SAR", name: "Rear Differential" },
     ],
   },
   {
-    name: "Doors, Fenders & Hoods",
+    name: "Doors, Fenders & Hood",
     cover: "/images/doors.2x.png",
     images: [
-      { src: "/images/download(17).png", price: "300 SAR" },
-      { src: "/images/download(18).png", price: "450 SAR" },
+      { src: "/images/download(17).png", price: "300 SAR", name: "Front Door" },
+      { src: "/images/download(18).png", price: "450 SAR", name: "Rear Fender" },
     ],
   },
   {
-    name: "Bumpers, Grilles & Front Panels",
+    name: "Bumpers, Grilles & Front End",
     cover: "/images/bumpars.2x.png",
     images: [
-      { src: "/images/download(19).png", price: "800 SAR" },
-      { src: "/images/download(20).png", price: "950 SAR" },
+      { src: "/images/download(19).png", price: "800 SAR", name: "Front Bumper" },
+      { src: "/images/download(20).png", price: "950 SAR", name: "Grille" },
     ],
   },
 ]
@@ -86,8 +86,7 @@ export default function FeatureList() {
       <div className="w-full px-4 sm:px-10 md:px-20 lg:px-40 text-center">
         <h2 className="text-2xl sm:text-3xl font-bold mb-6">Spare Parts Marketplace</h2>
 
-        {/* Section buttons with icons */}
-        <div className="flex justify-center overflow-x-auto gap-4 mb-8 scrollbar-hide">
+        <div className="flex overflow-x-auto gap-4 mb-8 scrollbar-hide">
           {sections.map((section) => (
             <button
               key={section.name}
@@ -101,28 +100,8 @@ export default function FeatureList() {
               <Image
                 src={section.cover}
                 alt={section.name}
-                width={
-                  section.name === "Shocks, Arms & Stabilizers"
-                    ? 40
-                    : section.name === "Axles, Differentials & Bearings"
-                      ? 50
-                      : section.name === "Doors, Fenders & Hoods"
-                        ? 40
-                        : section.name === "Bumpers, Grilles & Front Panels"
-                          ? 80
-                          : 60
-                }
-                height={
-                  section.name === "Shocks, Arms & Stabilizers"
-                    ? 40
-                    : section.name === "Axles, Differentials & Bearings"
-                      ? 50
-                      : section.name === "Doors, Fenders & Hoods"
-                        ? 40
-                        : section.name === "Bumpers, Grilles & Front Panels"
-                          ? 50
-                          : 30
-                }
+                width={section.name === "Shocks, Arms & Stabilizers" ? 40 : 60}
+                height={section.name === "Shocks, Arms & Stabilizers" ? 30 : 40}
                 className="object-contain"
               />
               <span className="text-xs sm:text-sm text-center leading-tight">{section.name}</span>
@@ -130,7 +109,6 @@ export default function FeatureList() {
           ))}
         </div>
 
-        {/* Product cards with links */}
         <Card className="p-3">
           <CardContent>
             <div className="flex gap-3 overflow-x-auto scrollbar-hide">
@@ -138,16 +116,27 @@ export default function FeatureList() {
                 <a
                   key={i}
                   href={`/product/${activeSection.name}-${i}`}
-                  className="border rounded-lg overflow-hidden shadow-sm p-3 bg-white flex flex-col items-center justify-between hover:shadow-md transition min-h-[180px] sm:min-h-[250px] w-[130px] sm:w-[180px] flex-shrink-0"
+                  className="relative border rounded-lg overflow-hidden shadow-sm p-3 bg-white flex flex-col items-center justify-start hover:shadow-md transition min-h-[240px] sm:min-h-[280px] w-[130px] sm:w-[180px] flex-shrink-0"
                 >
+                  <span className="absolute top-2 left-2 bg-green-600 text-white text-[10px] sm:text-xs px-2 py-0.5 rounded-full z-10">
+                    Genuine
+                  </span>
+
                   <Image
                     src={item.src}
                     alt={`${activeSection.name}-part-${i}`}
-                    width={80}
-                    height={80}
-                    className="object-contain"
+                    width={100}
+                    height={100}
+                    className="object-contain mb-2 sm:mb-3"
                   />
-                  <p className="mt-2 text-xs sm:text-sm font-medium text-gray-700 text-center">{item.price}</p>
+
+                  <p className="text-sm sm:text-lg text-gray-800 text-center mb-1">
+                    {item.name}
+                  </p>
+
+                  <p className="text-sm sm:text-base font-bold text-gray-700 text-center mt-auto">
+                    {item.price}
+                  </p>
                 </a>
               ))}
             </div>

@@ -4,37 +4,35 @@ import Link from "next/link"
 import Image from "next/image"
 
 export default function PriceBanner() {
-    return (
-        <Link
-            href="/request-quote"
-            className="max-w-5xl mx-auto block border-2 border-cyan-400 rounded-2xl bg-cyan-50 shadow-md py-10 px-6 my-12 transition hover:bg-cyan-100 hover:shadow-xl hover:border-cyan-500"
-        >
-            <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="md:w-1/3 flex items-center justify-start gap-4 mb-6 md:mb-0">
-                    <Image
-                        src="/images/pricing.svg"
-                        alt="خدمة سعّرلي"
-                        width={50}
-                        height={50}
-                        className="object-contain"
-                    />
-                    <span className="text-xl font-bold text-teal-600 whitespace-nowrap">
-                        اطلب خدمة سعّرلي
-                    </span>
-                </div>
+  return (
+    <Link
+      href="/request-quote"
+      className="max-w-5xl mx-auto block rounded-3xl bg-cyan-50 border border-cyan-300 shadow-sm px-6 py-10 my-12 transition hover:bg-cyan-100 hover:shadow-md hover:border-cyan-500"
+    >
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* أيقونة وعنوان الخدمة */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-full bg-cyan-200 flex items-center justify-center">
+            <Image
+              src="/images/pricing.svg"
+              alt="خدمة سعّرلي"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold text-teal-700">
+            اطلب خدمة سعّرلي
+          </h3>
+        </div>
 
-                <div className="md:w-2/3 text-left md:text-left">
-                    <p className="text-sm text-gray-700 mb-2">
-                        تسعيرة مباشرة من شبكة تجار سبيرو الواسعة
-                    </p>
-                    <p className="text-sm text-gray-700 mb-2">
-                        خصم إضافي عند شراء القطع
-                    </p>
-                    <p className="text-sm text-gray-700">
-                        رسوم تسعيرة مستردة في حال لم تناسبك التسعيرة
-                    </p>
-                </div>
-            </div>
-        </Link>
-    )
+        {/* تفاصيل الخدمة */}
+        <div className="text-sm sm:text-base text-gray-700 text-right md:text-left leading-relaxed">
+          <p>تسعيرة مباشرة من شبكة تجار سبيرو الواسعة</p>
+          <p>خصم إضافي عند شراء القطع</p>
+          <p>رسوم التسعيرة مستردة إذا لم تناسبك</p>
+        </div>
+      </div>
+    </Link>
+  )
 }

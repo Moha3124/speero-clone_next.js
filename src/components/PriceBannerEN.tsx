@@ -3,38 +3,36 @@
 import Link from "next/link"
 import Image from "next/image"
 
-export default function PriceBannerEN() {
-    return (
-        <Link
-            href="/request-quote"
-            className="max-w-5xl mx-auto block border-2 border-cyan-400 rounded-2xl bg-cyan-50 shadow-md py-10 px-6 my-12 transition hover:bg-cyan-100 hover:shadow-xl hover:border-cyan-500"
-        >
-            <div className="flex flex-col md:flex-row items-center justify-between">
-                <div className="md:w-1/3 flex items-center justify-start gap-4 mb-6 md:mb-0">
-                    <Image
-                        src="/images/pricing.svg"
-                        alt="Request a Quote Service"
-                        width={50}
-                        height={50}
-                        className="object-contain"
-                    />
-                    <span className="text-xl font-bold text-teal-600 whitespace-nowrap">
-                        Request a Quote
-                    </span>
-                </div>
+export default function PriceBanner() {
+  return (
+    <Link
+      href="/request-quote"
+      className="max-w-5xl mx-auto block rounded-3xl bg-cyan-50 border border-cyan-300 shadow-sm px-6 py-10 my-12 transition hover:bg-cyan-100 hover:shadow-md hover:border-cyan-500"
+    >
+      <div className="flex flex-col md:flex-row items-center justify-between gap-6">
+        {/* Icon and service title */}
+        <div className="flex items-center gap-4">
+          <div className="w-14 h-14 rounded-full bg-cyan-200 flex items-center justify-center">
+            <Image
+              src="/images/pricing.svg"
+              alt="Price Request Service"
+              width={32}
+              height={32}
+              className="object-contain"
+            />
+          </div>
+          <h3 className="text-xl sm:text-2xl font-bold text-teal-700">
+            Request a Price Quote
+          </h3>
+        </div>
 
-                <div className="md:w-2/3 text-left md:text-right">
-                    <p className="text-sm text-gray-700 mb-2">
-                        Instant quote from Speero's wide network of dealers
-                    </p>
-                    <p className="text-sm text-gray-700 mb-2">
-                        Extra discount when purchasing parts
-                    </p>
-                    <p className="text-sm text-gray-700">
-                        Quote fee refundable if the quote does not suit you
-                    </p>
-                </div>
-            </div>
-        </Link>
-    )
+        {/* Service details */}
+        <div className="text-sm sm:text-base text-gray-700 text-left leading-relaxed">
+          <p>Instant pricing from Speero’s wide dealer network</p>
+          <p>Extra discount when purchasing parts</p>
+          <p>Refundable fee if the quote doesn’t suit you</p>
+        </div>
+      </div>
+    </Link>
+  )
 }

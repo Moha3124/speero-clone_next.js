@@ -7,43 +7,66 @@ import Image from "next/image"
 const services = [
   {
     name: "Best Sellers",
-    images: ["/images/services/best1.png", "/images/services/best2.png"],
+    items: [
+      { src: "/images/services/best1.png", name: "Oil Change Service", price: "150 SAR" },
+      { src: "/images/services/best2.png", name: "Full Inspection", price: "200 SAR" },
+    ],
   },
   {
     name: "Maintenance",
-    images: ["/images/services/maintenance1.png", "/images/services/maintenance2.png"],
+    items: [
+      { src: "/images/services/maintenance1.png", name: "Routine Maintenance", price: "250 SAR" },
+      { src: "/images/services/maintenance2.png", name: "Engine Check", price: "300 SAR" },
+    ],
   },
   {
     name: "Polishing & Care",
-    images: ["/images/services/polish1.png", "/images/services/polish2.png"],
+    items: [
+      { src: "/images/services/polish1.png", name: "Exterior Polishing", price: "180 SAR" },
+      { src: "/images/services/polish2.png", name: "Interior Cleaning", price: "120 SAR" },
+    ],
   },
   {
     name: "Front Protection",
-    images: ["/images/services/frontprotection1.png"],
+    items: [
+      { src: "/images/services/frontprotection1.png", name: "Clear Protection", price: "400 SAR" },
+    ],
   },
   {
     name: "Window Tinting",
-    images: ["/images/services/window1.png"],
+    items: [
+      { src: "/images/services/window1.png", name: "Heat-Resistant Tint", price: "350 SAR" },
+    ],
   },
   {
     name: "Paint & Dent Repair",
-    images: ["/images/services/paint1.png"],
+    items: [
+      { src: "/images/services/paint1.png", name: "Scratch Repair", price: "300 SAR" },
+    ],
   },
   {
     name: "General",
-    images: ["/images/services/general1.png"],
+    items: [
+      { src: "/images/services/general1.png", name: "General Service", price: "100 SAR" },
+    ],
   },
   {
     name: "Tire Services",
-    images: ["/images/services/tires1.png"],
+    items: [
+      { src: "/images/services/tires1.png", name: "Tire Balancing", price: "80 SAR" },
+    ],
   },
   {
     name: "Car Wash",
-    images: ["/images/services/wash1.png"],
+    items: [
+      { src: "/images/services/wash1.png", name: "Exterior Wash", price: "50 SAR" },
+    ],
   },
   {
     name: "AC Services",
-    images: ["/images/services/ac1.png"],
+    items: [
+      { src: "/images/services/ac1.png", name: "AC Filter Cleaning", price: "90 SAR" },
+    ],
   },
 ]
 
@@ -76,18 +99,34 @@ export default function CarServices() {
         <Card className="p-3">
           <CardContent>
             <div className="flex gap-3 overflow-x-auto scrollbar-hide">
-              {activeService.images.map((img, i) => (
+              {activeService.items.map((item, i) => (
                 <div
                   key={i}
-                  className="border rounded-lg overflow-hidden shadow-sm p-3 bg-white flex flex-col items-center justify-center hover:shadow-md transition min-h-[180px] sm:min-h-[250px] w-[130px] sm:w-[180px] flex-shrink-0"
+                  className="relative border rounded-lg overflow-hidden shadow-sm p-3 bg-white flex flex-col items-center justify-start hover:shadow-md transition min-h-[240px] sm:min-h-[280px] w-[130px] sm:w-[180px] flex-shrink-0"
                 >
+                  {/* "Genuine" badge */}
+                  <span className="absolute top-2 left-2 bg-green-600 text-white text-[10px] sm:text-xs px-2 py-0.5 rounded-full z-10">
+                    Genuine
+                  </span>
+
+                  {/* Image */}
                   <Image
-                    src={img}
+                    src={item.src}
                     alt={`${activeService.name}-service-${i}`}
-                    width={80}
-                    height={80}
-                    className="object-contain"
+                    width={100}
+                    height={100}
+                    className="object-contain mb-2 sm:mb-3"
                   />
+
+                  {/* Service name */}
+                  <p className="text-sm sm:text-lg text-gray-800 text-center mb-1">
+                    {item.name}
+                  </p>
+
+                  {/* Price */}
+                  <p className="text-sm sm:text-base font-bold text-gray-700 text-center mt-auto">
+                    {item.price}
+                  </p>
                 </div>
               ))}
             </div>
